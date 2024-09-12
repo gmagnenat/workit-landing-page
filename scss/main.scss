@@ -21,21 +21,27 @@ h4 {
   top: 0;
   width: 100%;
   z-index: 10;
-}
-
-.header__nav {
   display: flex;
-  width: 100%;
+  margin-inline: auto;
   justify-content: space-between;
 }
 
-.nav__logo {
+.header__wrapper {
+  max-width: 90rem;
+  width: 100%;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
   svg {
     fill: $clr-white;
   }
 }
 
-.nav__link {
+.header__link {
   color: $clr-white;
   font-weight: 700;
   text-decoration-color: $clr-green;
@@ -56,12 +62,35 @@ h4 {
   align-items: center;
   position: relative;
   padding-inline: 1rem;
+  min-height: clamp(
+    30.0625rem,
+    calc(30.0625rem + ((1vw - 0.2rem) * 32.9545)),
+    48.1875rem
+  );
 
   @include rounded-bottom($clr-purple-900, 0);
 }
 
+.hero__decoration {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    background: url("../assets/images/bg-pattern-1.svg") no-repeat;
+    height: auto;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+}
+
 .hero__heading {
-  font-size: 3rem;
+  font-size: clamp(3rem, calc(3rem + ((1vw - 0.2rem) * 3.6364)), 5rem);
   color: $clr-white;
   width: fit-content;
   text-align: center;
@@ -80,9 +109,18 @@ h4 {
 }
 
 .hero__img {
-  max-width: 20rem;
-  transform: translateY(65%);
+  max-width: clamp(20rem, calc(20rem + ((1vw - 0.2rem) * 50.7955)), 47.9375rem);
+  position: absolute;
+  bottom: -22%;
   z-index: 1;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: red;
+  }
 }
 
 .features {
@@ -134,18 +172,24 @@ h4 {
 }
 
 .cta {
-  margin-top: 5rem;
+  padding-top: 25rem;
   padding-inline: 1rem;
 }
 
 .cta__wrapper {
   display: grid;
+  grid-template-rows: auto auto;
 }
 
 .cta__img {
-  max-width: 17.5rem;
-  transform: translateY(18%);
-  z-index: -1;
+  max-width: clamp(
+    17.5rem,
+    calc(17.5rem + ((1vw - 0.2rem) * 22.3864)),
+    29.8125rem
+  );
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  transform: translateY(-65%);
   margin-inline: auto;
 }
 
@@ -155,17 +199,23 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: fit-content;
   padding: 2rem;
   text-align: center;
   gap: 2rem;
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  z-index: 2;
+  width: 100%;
 }
 
 .cta__title {
-  font-size: 2rem;
+  font-size: clamp(2rem, calc(2rem + ((1vw - 0.2rem) * 2.5)), 3.5rem);
 }
 
 .cta__description {
   line-height: 2;
+  max-width: 54ch;
 }
 
 .footer {
@@ -224,5 +274,110 @@ h4 {
     background: $clr-purple-100;
     clip-path: ellipse(70% 65% at 50% 8%);
     z-index: -1;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .hero {
+    background-image: url(../assets/images/bg-pattern-1.svg),
+      url(../assets/images/bg-pattern-2.svg);
+    background-repeat: no-repeat;
+    background-position: calc(0% - 10rem), calc(100% + 5rem) calc(100% - 5rem);
+  }
+  .features {
+    padding-top: 15rem;
+  }
+
+  .feature {
+    flex-direction: row;
+    text-align: left;
+    gap: 3.5rem;
+  }
+
+  .cta {
+    align-items: start;
+    max-width: 70rem;
+    margin-inline: auto;
+  }
+
+  .cta__img {
+    transform: translateY(-60%);
+    margin-left: 0;
+  }
+
+  .cta__content {
+    align-items: start;
+    text-align: left;
+    max-width: 31.5rem;
+    margin-left: auto;
+    padding: 2rem;
+    position: relative;
+
+    &::after {
+      content: "";
+      background: url("../assets/images/bg-pattern-3.svg") no-repeat;
+      position: absolute;
+      top: 70%;
+      left: 55%;
+      width: 13.8125rem;
+      height: 13.25rem;
+    }
+  }
+}
+
+@media screen and (min-width: 62em) {
+  .hero {
+    background-position: calc(0% - 5rem), calc(100% + 2rem) calc(100% - 10rem);
+  }
+
+  .header {
+    padding-top: 3.5rem;
+  }
+  .hero {
+    padding-top: 9.1875rem;
+  }
+  .hero__img {
+    max-width: 48rem;
+  }
+
+  .features {
+    padding-bottom: 6rem;
+  }
+
+  .features__list {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .feature {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .feature__title {
+    font-size: 2rem;
+  }
+
+  .cta__img {
+    transform: translateY(-42%);
+  }
+
+  .cta__content {
+    max-width: 45.625rem;
+    padding: 4rem;
   }
 }
