@@ -86,7 +86,8 @@ h4 {
 }
 
 .features {
-  padding-top: 10rem;
+  padding-top: 12rem;
+  padding-bottom: 3rem;
   counter-reset: featureCounter;
   padding-inline: 1rem;
   background: $clr-purple-100;
@@ -129,6 +130,7 @@ h4 {
 
 .faeture__description {
   margin-top: 1rem;
+  max-width: 34ch;
 }
 
 .cta {
