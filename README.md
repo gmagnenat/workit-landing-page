@@ -12,9 +12,7 @@ This is a solution to the [Workit landing page challenge on Frontend Mentor](htt
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -46,14 +44,25 @@ Users should be able to:
 
 ### What I learned
 
+I practiced responsive layout using grid. specially in the founder section where there is the portrait and a box of content overlapping the image. I can use a grid and set the two items on the same column and same row.
+
+Using background image on the hero section for the spiral illustration. I can call several images and set their individual position.
+
+```css
+.hero {
+  background-image: url(../assets/images/bg-pattern-1.svg),
+    url(../assets/images/bg-pattern-2.svg);
+  background-repeat: no-repeat;
+  background-position: calc(0% - 10rem), calc(100% + 5rem) calc(100% - 5rem);
+}
+```
+
 ### Continued development
 
-### Useful resources
+Finetune the css to match the design
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-## Acknowledgments
+- Website - [Gwenaël Magnenat](https://gmagnenat.com)
+- Frontend Mentor - [@gmagnenat](https://www.frontendmentor.io/profile/gmagnenat)
+- LinkedIn - [@gmagnenat](https://linkedin.com/in/gmagnenat)
